@@ -11,11 +11,10 @@ const regimenes = [
 
 const calcular = (regimen: string, ingresos: number) => {
   switch (regimen) {
-    case "resico": {
+  case "resico": {
       const tasa = ingresos <= 300000 ? 0.01 : ingresos <= 600000 ? 0.015 : ingresos <= 1000000 ? 0.02 : 0.025;
       const isr = ingresos * tasa;
-      const iva = ingresos * 0.16;
-      return { isr, iva, total: isr + iva, tasa: tasa * 100, nota: "En RESICO el IVA se traslada al cliente, no es un gasto tuyo." };
+      return { isr, iva: 0, total: isr, tasa: tasa * 100, nota: "En RESICO personas físicas no se paga IVA. Solo pagas ISR sobre tus ingresos." };
     }
     case "honorarios": {
       const base = ingresos * 0.8;
